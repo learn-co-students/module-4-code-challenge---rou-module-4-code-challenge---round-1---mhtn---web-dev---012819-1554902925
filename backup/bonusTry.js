@@ -24,7 +24,13 @@ class App extends Component {
 
   clickHandler = bookObj => {
     let newArr = [...this.state.shelf, bookObj];
-    this.setState({ shelf: newArr });
+    let shelf = this.state.shelf;
+    let foundBook = this.state.shelf.find(book => book.title === bookObj.title);
+    if (bookObj.title === foundBook.title) {
+      this.setState({ shelf: shelf });
+    } else {
+      this.setState({ shelf: newArr });
+    }
   };
 
   removeHandler = bookObj => {
