@@ -1,17 +1,20 @@
 import React, { Component } from "react";
 import Book from "../components/Book";
-import Form from "../components/Form";
+import { Card } from 'semantic-ui-react';
 
-class BookList extends Component {
-  render() {
-    return (
-      <div className="book-list">
-        <h1>Book List</h1>
-        <Form />
-        <ul>{/*render list of books here*/}</ul>
-      </div>
-    );
-  }
+const BookList = props => {
+  return (
+    <div className="eight wide column">
+      <h1>Book List</h1>
+      <Card.Group itemsPerRow={3}>
+        {
+          props.books.map(book => 
+            <Book key={book.id} book={book} clickHandler={props.handleBookClick} source='list' />
+          )
+        }
+      </Card.Group>
+    </div>
+  );
 }
 
 export default BookList;
