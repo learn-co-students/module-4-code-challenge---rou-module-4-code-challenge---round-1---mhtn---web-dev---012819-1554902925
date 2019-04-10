@@ -2,10 +2,12 @@ import React from "react";
 import Book from "../components/Book";
 
 const Bookshelf = props => {
+  console.log(props)
+  const books = props.books.map(book => <Book key={book.id} {...book} clickHandler={props.clickHandler}/>)
   return (
     <div>
       <h1>Book Shelf</h1>
-      <ul>{/*render list of books here*/}</ul>
+      <ul>{books}</ul>
     </div>
   );
 };
