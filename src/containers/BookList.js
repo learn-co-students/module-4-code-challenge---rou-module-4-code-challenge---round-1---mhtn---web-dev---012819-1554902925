@@ -6,9 +6,11 @@ class BookList extends Component {
   render() {
     return (
       <div className="book-list">
+        <Form addingBook={this.props.addingBook} allBooks={this.props.books}/>
         <h1>Book List</h1>
-        <Form />
-        <ul>{/*render list of books here*/}</ul>
+        <ul>{this.props.books.map(book => {
+          return <Book key={book.id} clickedBook={this.props.clickedBook} book={book}/>
+        })}</ul>
       </div>
     );
   }
